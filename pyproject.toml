@@ -1,0 +1,52 @@
+[project]
+name = "pythonproject4"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "fura4ch", email = "furial03@yandex.ru"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+black = "^24.0"
+flake8 = "^7.0"
+mypy = "^1.10"
+isort = "^5.13"
+
+[tool.black]
+line-length = 120
+target-version = ["py313"]
+skip-string-normalization = true
+
+[tool.isort]
+profile = "black"
+line_length = 120
+known_first_party = ["src"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+[tool.flake8]
+max-line-length = 120
+extend-ignore = "E203, W503"
+exclude = ".git,__pycache__,build,dist,*.egg-info,.venv"
+per-file-ignores = "__init__.py:F401"
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--verbose --color=yes"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
