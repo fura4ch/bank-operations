@@ -18,12 +18,17 @@ def mask_account_card(account_info: str) -> str:
 
     Returns:
         Замаскированная строка
+
+    Raises:
+        ValueError: Если строка пустая или не содержит номер.
     """
+    parts = account_info.split()
+    if not parts:
+        raise ValueError("Строка не содержит номера карты или счёта")
+
     if "Счет" in account_info:
-        parts = account_info.split()
         return f"{' '.join(parts[:-1])} {get_mask_account(parts[-1])}"
     else:
-        parts = account_info.split()
         return f"{' '.join(parts[:-1])} {get_mask_card_number(parts[-1])}"
 
 
@@ -38,10 +43,3 @@ def get_date(date_str: str) -> str:
         Дата в формате '11.03.2024'
     """
     return datetime.fromisoformat(date_str).strftime("%d.%m.%Y")
-
-
-if __name__ == "__main__":
-    # Примеры использования (для тестирования)
-    print(mask_account_card("Visa Platinum 7000792289606361"))  # Visa Platinum 7000 79** **** 6361
-    print(mask_account_card("Счет 73654108430135874305"))  # Счет **4305
-    print(get_date("2024-03-11T02:26:18.671407"))  # 11.03.2024
