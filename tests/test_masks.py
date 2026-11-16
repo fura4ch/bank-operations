@@ -14,11 +14,11 @@ class TestGetMaskCardNumber:
     @pytest.mark.parametrize(
         "invalid_number",
         [
-            "123456789012345",   # 15 цифр
-            "12345678901234567", # 17 цифр
+            "123456789012345",  # 15 цифр
+            "12345678901234567",  # 17 цифр
             "12345678901234ab",  # буквы
             "1234 5678 9012 3456",  # пробелы
-            "",                  # пустая строка
+            "",  # пустая строка
         ],
     )
     def test_invalid_card_number_raises(self, invalid_number):
@@ -43,9 +43,9 @@ class TestGetMaskAccount:
     @pytest.mark.parametrize(
         "invalid_account",
         [
-            "123",       # 3 цифры
-            "12ab",      # буквы
-            "",          # пустая строка
+            "123",  # 3 цифры
+            "12ab",  # буквы
+            "",  # пустая строка
         ],
     )
     def test_invalid_account_raises(self, invalid_account):

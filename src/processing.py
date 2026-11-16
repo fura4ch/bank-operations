@@ -39,16 +39,3 @@ def sort_by_date(operations: List[Dict[str, Any]], reverse: bool = True) -> List
             raise KeyError(f"Отсутствует ключ 'date' в операции: {op}")
 
     return sorted(operations, key=lambda x: x['date'], reverse=reverse)
-
-
-if __name__ == "__main__":
-    test_data = [
-        {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
-        {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
-        {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
-    ]
-
-    print("Фильтрация (EXECUTED):", filter_by_state(test_data))
-    print("Фильтрация (CANCELED):", filter_by_state(test_data, 'CANCELED'))
-    print("Сортировка (по убыванию):", sort_by_date(test_data))
-    print("Сортировка (по возрастанию):", sort_by_date(test_data, False))
