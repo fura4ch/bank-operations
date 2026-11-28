@@ -33,3 +33,21 @@ def operations_list():
             "date": "2018-09-12T21:27:25.241689",
         },
     ]
+
+
+@pytest.fixture
+def card_info():
+    """Фикстура: строка с номером карты."""
+    return "Visa Platinum 7000792289606361"
+
+
+@pytest.fixture
+def account_info():
+    """Фикстура: строка с номером счёта."""
+    return "Счет 73654108430135874305"
+
+
+@pytest.fixture
+def valid_date_str():
+    """Фикстура: корректная ISO-дата."""
+    return "2024-03-11T02:26:18.671407"
